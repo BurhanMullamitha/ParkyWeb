@@ -50,10 +50,8 @@ namespace ParkyWeb.Repository
             if(response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 return true;
-            } else
-            {
-                return false;
             }
+            return false;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync(string url)
