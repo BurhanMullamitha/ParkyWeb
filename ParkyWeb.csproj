@@ -13,8 +13,11 @@
     <Folder Include="Repository\" />
     <Folder Include="Repository\IRepository\" />
     <Folder Include="Views\NationalParks\" />
+    <Folder Include="Models\ViewModel\" />
+    <Folder Include="Views\Trails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\NationalParks\Index.cshtml" />
+    <Content Remove="wwwroot\js\trail.js" />
   </ItemGroup>
 </Project>

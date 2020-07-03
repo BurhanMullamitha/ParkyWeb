@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ParkyWeb.Repository.IRepository;
 
@@ -41,7 +43,7 @@ namespace ParkyWeb.Repository
 
         public async Task<bool> DeleteAsync(string url, int Id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, url + Id);
+            var request = new HttpRequestMessage(HttpMethod.Delete, url + Id);
 
             var client = _clientFactory.CreateClient();
             HttpResponseMessage response = await client.SendAsync(request);
@@ -70,7 +72,7 @@ namespace ParkyWeb.Repository
 
         public async Task<T> GetAsync(string url, int Id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, url + Id);
+            var request = new HttpRequestMessage(HttpMethod.Get, url+Id);
 
             var client = _clientFactory.CreateClient();
             HttpResponseMessage response = await client.SendAsync(request);

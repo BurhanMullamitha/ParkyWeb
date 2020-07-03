@@ -6,13 +6,11 @@
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row px-2 mx-2 backgroundWhite border">
-        @{
-            if (Model.Id != 0)
+        @if (Model.Id != 0)
             {
                 <input type="hidden" asp-for="Id" />
                 title = "Edit National Park";
             }
-        }
         <div class="col-12 p-3">
             <h2 class="text-primary">@title</h2>
         </div>
@@ -91,3 +89,5 @@
     })
 </script>
 }
+
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

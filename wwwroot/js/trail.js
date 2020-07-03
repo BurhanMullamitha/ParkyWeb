@@ -5,26 +5,28 @@ $(document).ready(function () {
 })
 
 function loadDataTable() {
-    dataTable = $('#tblData').DataTable({
+  dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/nationalParks/GetAllNationalParks",
+            "url": "/trails/GetAllTrails",
             "type": "GET",
-            "datatype": "json"
+            "datatype": "json",
         },
         "columns": [
-            { "data": "name", "width": "50%" },
-            { "data": "state", "width": "20%" },
+            { "data": "nationalPark.name", "width": "25%" },
+            { "data": "name", "width": "20%" },
+            { "data": "distance", "width": "15%" },
+            { "data": "elevation", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return `
-                                <div class="text-center">
-                                    <a href="/nationalParks/Upsert/${data}" class="btn btn-success text-white"
-                                        style="cursor:pointer;"><i class="far fa-edit"></i></a>
+                              <div class="text-center">
+                                  <a href="/trails/Upsert/${data}" class="btn btn-success text-white"
+                                      style="cursor:pointer;"><i class="far fa-edit"></i></a>
 
-                                    <a onClick=Delete("/nationalParks/Delete/${data}") class="btn btn-danger text-white"
-                                        style="cursor:pointer;"><i class="far fa-trash-alt"></i></a>
-                                </div>
+                                  <a onClick=Delete("/trails/Delete/${data}") class="btn btn-danger text-white"
+                                      style="cursor:pointer;"><i class="far fa-trash-alt"></i></a>
+                              </div>
 
                            `;
                 },
