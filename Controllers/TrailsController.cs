@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using ParkyWeb.Repository.IRepository;
 
 namespace ParkyWeb.Controllers
 {
+  [Authorize]
   public class TrailsController : Controller
   {
 
@@ -29,6 +31,7 @@ namespace ParkyWeb.Controllers
       return View(new Trail() { });
     }
 
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Upsert(int? id)
     {
       IEnumerable<NationalPark> npList = await _npRepo.GetAllAsync(SD.NationalParkAPIPath, HttpContext.Session.GetString("JWToken"));
